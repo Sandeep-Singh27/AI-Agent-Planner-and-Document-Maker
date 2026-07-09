@@ -3,6 +3,7 @@ from src.schema import UserRequest
 from src.llm import plan,execute
 from src.generate_document import generate_docx
 from fastapi.responses import FileResponse
+import traceback
 
 app = FastAPI()
 
@@ -15,4 +16,6 @@ def handle_request(user_request:UserRequest):
         file_path = generate_docx(execution_result,file_name)
         return FileResponse(file_path)
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail="Server Side Error")
+    

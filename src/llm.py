@@ -35,8 +35,9 @@ def execute(plan: PlanSchema):
         {
             "plan_name": plan.plan_name,
             "goals": plan.goals,
+            "tasks":plan.tasks,
             "task":plan.tasks[0],
-            "document": "",
+            "document": "Initally there is no document, you must create the template for the document required that will be edited by the further task",
         }
     )
 
@@ -48,7 +49,8 @@ def execute(plan: PlanSchema):
                 {
                 "plan_name": plan.plan_name,
                 "goals": plan.goals,
-                "task":plan.tasks[0],
+                "tasks":plan.tasks,
+                "task":plan.tasks[i],
                 "document": context,
                 }           
             )

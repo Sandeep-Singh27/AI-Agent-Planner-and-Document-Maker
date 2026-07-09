@@ -26,6 +26,9 @@ FINAL GOAL:
 SUB-GOALS:
 {goals}
 
+SEQUENTIAL LIST OF TASKS:
+{tasks}
+
 TASK:
 {task}
 
