@@ -18,7 +18,7 @@ All these returns items will be processed futher to create a document.
 
 task_execution_prompt = ChatPromptTemplate.from_template(
 """
-you are a task execution agent. complete tasks and create the document.
+you are a task execution agent. complete tasks and create the document. do not use markdown characters , keep it simple.
 
 FINAL GOAL:
 {plan_name}
