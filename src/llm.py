@@ -30,8 +30,12 @@ execution_output = llm.with_structured_output(ExecutionResult)
 execution_chain = task_execution_prompt | execution_output
 
 def execute(plan: PlanSchema):
+
+    if not plan.tasks:
+        raise ValueError("Planner returned no tasks")
+
     print(f"Executing: {plan.tasks[0]}")
-    initial_response = execution_chain.invoke(
+    response = execution_chain.invoke(
         {
             "plan_name": plan.plan_name,
             "goals": plan.goals,
@@ -42,7 +46,7 @@ def execute(plan: PlanSchema):
     )
 
     if len(plan.tasks)>1:
-        context = initial_response
+        context = response
         for i in range(1,len(plan.tasks)):
             print(f"Executing: {plan.tasks[i]}")
             response = execution_chain.invoke(
